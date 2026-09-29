@@ -1,0 +1,10 @@
+syntax = "proto3";
+package cosmos.vault_logs.v1;
+
+option go_package = "github.com/cosmos/cosmos-sdk/x/vault_logs/types";
+
+// agent reg helper
+message AgentReg {
+  string agent_id   = 1;
+  string agent_type = 2;
+}

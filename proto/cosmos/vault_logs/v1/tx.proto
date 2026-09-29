@@ -1,0 +1,27 @@
+syntax = "proto3";
+package cosmos.vault_logs.v1;
+
+import "cosmos/msg/v1/msg.proto";
+
+option go_package = "github.com/cosmos/cosmos-sdk/x/vault_logs/types";
+
+// Msg defines the Msg service.
+service Msg {
+  option (cosmos.msg.v1.service) = true;
+  // RPC to reg agent
+  rpc RegAgent(RegAgentRequest) returns (RegAgentResponse);
+}
+
+// message req to reg agent
+message RegAgentRequest {
+  option (cosmos.msg.v1.signer) = "creator";
+  string creator                = 1;
+  string agent_id               = 2;
+  string agent_type             = 3;
+}
+
+// message resp tp reg agent
+message RegAgentResponse {
+  string agent_id   = 1;
+  string created_at = 2;
+}

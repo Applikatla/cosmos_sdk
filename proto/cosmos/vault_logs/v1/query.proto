@@ -1,0 +1,25 @@
+syntax = "proto3";
+package cosmos.vault_logs.v1;
+
+import "cosmos/vault_logs/v1/vault_logs.proto";
+import "google/api/annotations.proto";
+
+option go_package = "github.com/cosmos/cosmos-sdk/x/vault_logs/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  // ✅ Query agent by id
+  rpc GetAgentById(GetAgentByIdRequest) returns (GetAgentByIdResponse) {
+    option (google.api.http).get = "/vault_logs/v1/get_agent/{agent_id}";
+  }
+}
+
+// ✅ Request to get agent by id
+message GetAgentByIdRequest {
+  string agent_id = 1;
+}
+
+// ✅ Response for agent by id
+message GetAgentByIdResponse {
+  AgentReg agent = 1;
+}
